@@ -10,7 +10,7 @@ const root = createRoot(container);
 const store = configureStore({
   reducer: rootReducer,
 });
-console.log(store.getState());
+console.log('index store state', store.getState());
 
 root.render(
   <Provider store={store}>
@@ -21,6 +21,6 @@ root.render(
 // calling IPC exposed from preload script
 window.electron.ipcRenderer.once('ipc-example', (arg) => {
   // eslint-disable-next-line no-console
-  console.log(arg);
+  console.log('index ipcRenderer ', arg);
 });
 window.electron.ipcRenderer.myPing();
