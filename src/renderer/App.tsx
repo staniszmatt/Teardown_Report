@@ -9,17 +9,17 @@ import VisibleTodoList from './containers/VisibleToDoList';
 
 const TearDownApp = () => {
   return (
-    <div>
-      <div className="container">
+    <div className="container">
+      <div>
+        <Link to="TestPageOne">Test Page One</Link>
+        <Link to="TestPageTwo">Test Page Two</Link>
+      </div>
+      <div className="backgroundImage">
         <img width="200px" alt="icon" src={icon} />
       </div>
       <AddTodo />
       <VisibleTodoList />
       <Footer />
-      <div>
-        <Link to="TestPageOne">Test Page One</Link>
-        <Link to="TestPageTwo">Test Page Two</Link>
-      </div>
     </div>
   );
 };
