@@ -31,7 +31,7 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
+    "productName": "TearDownReport",
     "appId": "org.erb.ElectronReact",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
@@ -70,6 +70,7 @@
       ]
     },
     "win": {
+      "icon": "assets/aeropartsicon_1Jk_icon.ico",
       "target": [
         "nsis"
       ]
