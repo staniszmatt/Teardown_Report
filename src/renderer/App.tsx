@@ -1,6 +1,7 @@
 import { MemoryRouter, Routes, Route, Link } from 'react-router-dom';
 import icon from '../../assets/icons/logo.png';
 import './App.css';
+import NavBar from './containers/NavBar';
 import TP1 from './components/TestPageOne';
 import TP2 from './components/TestPageTwo';
 import Footer from './components/Footer';
@@ -10,13 +11,10 @@ import VisibleTodoList from './containers/VisibleToDoList';
 const TearDownApp = () => {
   return (
     <div className="container">
-      <div>
-        <Link to="TestPageOne">Test Page One</Link>
-        <Link to="TestPageTwo">Test Page Two</Link>
-      </div>
       <div className="backgroundImage">
         <img width="200px" alt="icon" src={icon} />
       </div>
+      <NavBar />
       <AddTodo />
       <VisibleTodoList />
       <Footer />
