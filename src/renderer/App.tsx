@@ -3,6 +3,9 @@ import icon from '../../assets/icons/logo.png';
 import './App.css';
 import TP1 from './components/TestPageOne';
 import TP2 from './components/TestPageTwo';
+import Footer from './components/Footer';
+import AddTodo from './containers/AddTodo';
+import VisibleTodoList from './containers/VisibleToDoList';
 
 const TearDownApp = () => {
   return (
@@ -10,6 +13,9 @@ const TearDownApp = () => {
       <div className="container">
         <img width="200px" alt="icon" src={icon} />
       </div>
+      <AddTodo />
+      <VisibleTodoList />
+      <Footer />
       <div>
         <Link to="TestPageOne">Test Page One</Link>
         <Link to="TestPageTwo">Test Page Two</Link>
