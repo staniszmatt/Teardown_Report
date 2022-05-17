@@ -14,7 +14,7 @@ const TearDownApp = () => {
       <div className="backgroundImage">
         <img width="200px" alt="icon" src={icon} />
       </div>
-      <NavBar />
+      {/* <NavBar /> */}
       <AddTodo />
       <VisibleTodoList />
       <Footer />
@@ -25,6 +25,7 @@ const TearDownApp = () => {
 export default function App() {
   return (
     <MemoryRouter>
+      <NavBar />
       <Routes>
         <Route path="/" element={<TearDownApp />} />
         <Route path="TestPageOne" element={<TP1 />} />
