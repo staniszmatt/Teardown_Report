@@ -1,4 +1,4 @@
-import { MemoryRouter, Routes, Route, Link } from 'react-router-dom';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import icon from '../../assets/icons/logo.png';
 import './App.css';
 import NavBar from './containers/NavBar';
@@ -14,7 +14,6 @@ const TearDownApp = () => {
       <div className="backgroundImage">
         <img width="200px" alt="icon" src={icon} />
       </div>
-      {/* <NavBar /> */}
       <AddTodo />
       <VisibleTodoList />
       <Footer />
