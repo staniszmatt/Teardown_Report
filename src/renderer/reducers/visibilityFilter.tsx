@@ -2,9 +2,7 @@
 import { VisibilityFilters } from '../actions';
 
 const visibilityFilter = (state = VisibilityFilters.SHOW_ALL, action: any) => {
-  console.log('reducers vis state', state);
-  console.log('reducers vis action', action);
-
+  console.log('reducer filter action: ', action);
   switch (action.type) {
     case 'SET_VISIBILITY_FILTER':
       return action.filter;

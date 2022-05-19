@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 let nextTodoId = 0;
 
-export const addTodo = (text: any) => ({
+export const addTodo = (text: Text) => ({
   type: 'ADD_TODO',
   // eslint-disable-next-line no-plusplus
   id: nextTodoId++,
   text,
 });
 
-export const setVisibilityFilter = (filter: any) => ({
+export const setVisibilityFilter = (filter: Text) => ({
   type: 'SET_VISIBILITY_FILTER',
   filter,
 });
 
-export const toggleTodo = (id: any) => ({
+export const toggleTodo = (id: Text) => ({
   type: 'TOGGLE_TODO',
   id,
 });

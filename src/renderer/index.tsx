@@ -1,16 +1,12 @@
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
+import configureAppStore from './store';
 import App from './App';
-import rootReducer from './reducers';
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const container = document.getElementById('root')!;
 const root = createRoot(container);
-const store = configureStore({
-  reducer: rootReducer,
-});
-console.log('index store state', store.getState());
+const store = configureAppStore();
 
 root.render(
   <Provider store={store}>
