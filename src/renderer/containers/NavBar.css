@@ -15,7 +15,7 @@
   z-index: 1;
 }
 
-.navBar button {
+.navBar a {
   font-family: serif;
   border-radius: 3px;
   filter: drop-shadow(1.5px 1.5px 1.5px black);
