@@ -7,6 +7,7 @@ import TP2 from './components/TestPageTwo';
 import Footer from './components/Footer';
 import AddTodo from './containers/AddTodo';
 import VisibleTodoList from './containers/VisibleToDoList';
+import ModalPage from './containers/ModalPage';
 
 const TearDownApp = () => {
   return (
@@ -24,6 +25,7 @@ const TearDownApp = () => {
 export default function App() {
   return (
     <MemoryRouter>
+      <ModalPage />
       <NavBar />
       <Routes>
         <Route path="/" element={<TearDownApp />} />

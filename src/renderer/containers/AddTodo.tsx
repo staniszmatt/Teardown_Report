@@ -2,9 +2,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
+import {
+  toggleWarningModalState,
+  toggleModalState,
+} from '../actions/modalActions';
 
 const AddTodo = ({ dispatch }: any) => {
   let input: any;
+
+  // Test Warning Modal
+  const warningModalResp = {
+    warningMsg: 'Warning Test',
+    btnLbl: 'Button Close',
+    actionFunction: () => {
+      dispatch(toggleModalState());
+    },
+    closeModal: () => {
+      dispatch(toggleModalState());
+    },
+  };
 
   return (
     <div>
@@ -15,6 +31,7 @@ const AddTodo = ({ dispatch }: any) => {
             return;
           }
           dispatch(addTodo(input.value));
+          dispatch(toggleWarningModalState(warningModalResp));
           input.value = '';
         }}
       >
