@@ -4,7 +4,7 @@ import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
 
 import rootReducer from './reducers';
-import monitorReducerEnhancer from './middleware/monitorReducer';
+// import monitorReducerEnhancer from './middleware/monitorReducer';
 
 export default function configureAppStore() {
   // Logging Middleware

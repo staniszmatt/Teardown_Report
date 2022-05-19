@@ -1,7 +1,9 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
 
-const AddTodo = ({ dispatch }) => {
+const AddTodo = ({ dispatch }: any) => {
   let input: any;
 
   return (
@@ -16,7 +18,7 @@ const AddTodo = ({ dispatch }) => {
           input.value = '';
         }}
       >
-        <input ref={(node) => input = node} />
+        <input ref={(node) => (input = node)} />
         <button type="submit">Add Todo</button>
       </form>
     </div>

@@ -23,7 +23,7 @@ release/build
 .erb/dll
 
 src/config/*
-.vscode/
+.vscode/*
 
 .idea
 npm-debug.log.*
