@@ -8,7 +8,7 @@ import modals from './reducers/modalFilter';
 // import monitorReducerEnhancer from './middleware/monitorReducer';
 import { modalFilters } from './actions/modalActions';
 
-export default function configureAppStore(initialState) {
+export default function configureAppStore() {
   // Logging Middleware
   const logger = createLogger({
     level: 'info',
@@ -27,12 +27,12 @@ export default function configureAppStore(initialState) {
     middleware.push(logger);
   }
 
-    // Redux DevTools Configuration
-    const actionCreators = {
-      ...modalFilters
-    };
+  // Redux DevTools Configuration
+  const actionCreators = {
+    ...modals,
+  };
 
-    const setEnhancer = compose(...actionCreators);
+  // const setEnhancer = compose(...actionCreators);
 
   // Skip redux logs in console during the tests and if in production mode
   // Add any other dev enhancer here
@@ -48,7 +48,7 @@ export default function configureAppStore(initialState) {
   const store: any = configureStore({
     reducer: rootReducer,
     middleware,
-    enhancers: setEnhancer,
+    // enhancers: setEnhancer,
   });
 
   return store;

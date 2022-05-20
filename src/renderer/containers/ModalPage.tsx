@@ -26,7 +26,7 @@ interface Props {
 function mapStateToProps(state: any) {
   console.log('map state modal: ', state);
   return {
-    modals. state.modals,
+    modals: state,
   };
 }
 
