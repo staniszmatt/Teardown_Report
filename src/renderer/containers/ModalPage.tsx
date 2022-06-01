@@ -10,6 +10,7 @@ import { toggleModalState, modalFilters } from '../actions/modalActions';
 import WarningModal from '../components/modals/WarningModal';
 import ModalBtn from '../components/generalButton/ButtonClickHandler';
 import '../components/modals/Modal.css';
+import { debugPort } from 'process';
 
 interface Props {
   toggleModalState: () => Record<string, unknown>;
@@ -51,9 +52,9 @@ function AlarmModal(props: Props) {
   // TODO: Fix the way string props is passed or how to fix typescript rules.
   return (
     <div>
-      {props.modals.modalState && (
+      {props.modals.modalFilter.modalState && (
         <ReactModal
-          isOpen={props.modals.modalState}
+          isOpen={props.modals.modalFilter.modalState}
           onRequestClose={toggleModalState}
           contentLabel="MODAL"
           ariaHideApp={false}
