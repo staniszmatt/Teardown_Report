@@ -3,23 +3,24 @@
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
-import { toggleModalState, modalFilters } from '../actions/modalActions';
+import { toggleModalState } from '../actions/modalActions';
 // import { modalStateType } from '../../reducers/types';
 // import ErrorModal from './ErrorModal';
 // import SuccessModal from './SuccessModal';
 import WarningModal from '../components/modals/WarningModal';
 import ModalBtn from '../components/generalButton/ButtonClickHandler';
 import '../components/modals/Modal.css';
-import { debugPort } from 'process';
 
 interface Props {
   toggleModalState: () => Record<string, unknown>;
   modals: {
-    modalState: boolean;
-    errorModalState: boolean;
-    successModalState: boolean;
-    warningModalState: boolean;
-    modalMessage: any;
+    modalFilter: {
+      modalState: boolean;
+      errorModalState: boolean;
+      successModalState: boolean;
+      warningModalState: boolean;
+      modalMessage: any;
+    };
   };
 }
 
@@ -61,21 +62,21 @@ function AlarmModal(props: Props) {
           className="modal-container"
         >
           {/* {props.modals.errorModalState && (
-            <ErrorModal props={props.modals.modalMessage} />
+            <ErrorModal props={props.modals.modalFilter.modalMessage} />
           )}
           {props.modals.successModalState && (
-            <SuccessModal props={props.modals.modalMessage} />
+            <SuccessModal props={props.modals.modalFilter.modalMessage} />
           )} */}
-          {props.modals.warningModalState && (
-            <WarningModal props={props.modals.modalMessage} />
+          {props.modals.modalFilter.warningModalState && (
+            <WarningModal props={props.modals.modalFilter.modalMessage} />
           )}
 
-          {!props.modals.warningModalState && (
+          {!props.modals.modalFilter.warningModalState && (
             <div>
               <ModalBtn buttonName="CLOSE" ClickHandler={toggleModalState} />
             </div>
           )}
-          {props.modals.warningModalState && (
+          {props.modals.modalFilter.warningModalState && (
             <div>
               <ModalBtn buttonName="CANCEL" ClickHandler={toggleModalState} />
             </div>
