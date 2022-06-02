@@ -10,6 +10,8 @@ import webpackPaths from './webpack.paths';
 import { dependencies } from '../../package.json';
 import checkNodeEnv from '../scripts/check-node-env';
 
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+
 checkNodeEnv('development');
 
 const dist = webpackPaths.dllPath;
@@ -71,6 +73,7 @@ const configuration: webpack.Configuration = {
         },
       },
     }),
+    new NodePolyfillPlugin(),
   ],
 };
 

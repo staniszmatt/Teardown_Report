@@ -10,10 +10,14 @@
  */
 import path from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
+// import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import pjson from '../../package.json';
+
+// const store = new Store();
 
 export default class AppUpdater {
   constructor() {
@@ -25,10 +29,19 @@ export default class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
+// IPC Example for Main Index
 ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  console.log(msgTemplate(arg));
+  console.log('ipc example called', msgTemplate(arg));
   event.reply('ipc-example', msgTemplate('pong'));
+});
+
+// Pass App version
+ipcMain.on('app_version', async (event, arg) => {
+  const pversion = pjson.version;
+  const appVersion = (version: string) => version;
+  console.log('app version called: ', pversion, arg);
+  event.reply('app_version', appVersion(pversion));
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -115,6 +128,14 @@ const createWindow = async () => {
 /**
  * Add event listeners...
  */
+
+// IPC listener
+// ipcMain.on('electron-store-get', async (event, val) => {
+//   event.returnValue = store.get(val);
+// });
+// ipcMain.on('electron-store-set', async (event, key, val) => {
+//   store.set(key, val);
+// });
 
 app.on('window-all-closed', () => {
   // Respect the OSX convention of having the application in memory even

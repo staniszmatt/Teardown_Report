@@ -2,11 +2,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { configureStore, applyMiddleware, compose } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
 
 import rootReducer from './reducers';
-import modals from './reducers/modalFilter';
+// import * as modalActions from './actions/modalActions';
+// import * as teardownActions from './actions/teardownActions';
 // import monitorReducerEnhancer from './middleware/monitorReducer';
-import { modalFilters } from './actions/modalActions';
 
 export default function configureAppStore() {
   // Logging Middleware
@@ -18,6 +19,7 @@ export default function configureAppStore() {
   const middleware = [];
   // const enhancers = [];
 
+  middleware.push(thunkMiddleware);
   // Skip redux logs in console during the tests and if in production mode
   // Add any other dev middleware here
   if (
@@ -28,11 +30,10 @@ export default function configureAppStore() {
   }
 
   // Redux DevTools Configuration
-  const actionCreators = {
-    ...modals,
-  };
-
-  // const setEnhancer = compose(...actionCreators);
+  // const actionCreators = {
+  //   ...modalActions,
+  //   ...teardownActions,
+  // };
 
   // Skip redux logs in console during the tests and if in production mode
   // Add any other dev enhancer here
@@ -44,11 +45,15 @@ export default function configureAppStore() {
   // }
 
   // enhancers.push(applyMiddleware(...middleware));
+  // enhancers.push(...actionCreators);
+
+  // const middlewareEnhancer = applyMiddleware(...middleware);
+  // const composedEnhancers = compose(...enhancers);
 
   const store: any = configureStore({
     reducer: rootReducer,
     middleware,
-    // enhancers: setEnhancer,
+    // composedEnhancers,
   });
 
   return store;

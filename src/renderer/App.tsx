@@ -1,26 +1,22 @@
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icons/logo.png';
 import './App.css';
 import NavBar from './containers/NavBar';
 import TP1 from './components/TestPageOne';
 import TP2 from './components/TestPageTwo';
-import Footer from './components/Footer';
-import AddTodo from './containers/AddTodo';
-import VisibleTodoList from './containers/VisibleToDoList';
 import ModalPage from './containers/ModalPage';
+import TeardownApp from './containers/TeardownApp';
 
-const TearDownApp = () => {
-  return (
-    <div className="container">
-      <div className="backgroundImage">
-        <img width="200px" alt="icon" src={icon} />
-      </div>
-      <AddTodo />
-      <VisibleTodoList />
-      <Footer />
-    </div>
-  );
-};
+// declare global {
+//   interface Window {
+//     electron: {
+//       store: {
+//         get: (key: string) => any;
+//         set: (key: string, val: any) => void;
+//         // any other methods you've defined...
+//       };
+//     };
+//   }
+// }
 
 export default function App() {
   return (
@@ -28,7 +24,7 @@ export default function App() {
       <ModalPage />
       <NavBar />
       <Routes>
-        <Route path="/" element={<TearDownApp />} />
+        <Route path="/" element={<TeardownApp />} />
         <Route path="TestPageOne" element={<TP1 />} />
         <Route path="TestPageTwo" element={<TP2 />} />
       </Routes>

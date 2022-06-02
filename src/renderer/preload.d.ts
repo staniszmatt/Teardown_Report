@@ -3,6 +3,7 @@ declare global {
     electron: {
       ipcRenderer: {
         myPing(): void;
+        getVersion(): void;
         on(
           channel: string,
           func: (...args: unknown[]) => void

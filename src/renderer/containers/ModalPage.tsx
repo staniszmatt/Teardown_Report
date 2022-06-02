@@ -24,16 +24,13 @@ interface Props {
   };
 }
 
-// function mapStateToProps(state: modalStateType) {
 function mapStateToProps(state: any) {
-  console.log('map state modal: ', state);
   return {
     modals: state,
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<any>) {
-  console.log('dispatch modal ', dispatch);
   return bindActionCreators(
     {
       toggleModalState,
@@ -47,8 +44,6 @@ function AlarmModal(props: Props) {
   // eslint-disable-next-line no-shadow
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const { toggleModalState } = props;
-
-  console.log('modal page props: ', props);
 
   // TODO: Fix the way string props is passed or how to fix typescript rules.
   return (

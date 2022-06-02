@@ -1,5 +1,7 @@
 {
   "name": "electron-react-boilerplate",
+  "productName": "TearDownReport",
+  "version": "0.0.1",
   "description": "A foundation for scalable desktop apps",
   "scripts": {
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
@@ -237,6 +239,7 @@
     "electron-log": "^4.4.6",
     "electron-updater": "^4.6.5",
     "history": "^5.3.0",
+    "node-polyfill-webpack-plugin": "^1.1.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-modal": "^3.15.1",

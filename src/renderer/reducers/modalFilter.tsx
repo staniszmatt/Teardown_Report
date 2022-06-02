@@ -15,9 +15,6 @@ const IState = {
 };
 
 export default function modals(state = IState, action: ModalAction) {
-  console.log('modal state: on reducer: ', state);
-  console.log('action: on reducer: ', action);
-
   switch (action.type) {
     case modalFilters.TOGGLE_MODAL_STATE:
       return {
