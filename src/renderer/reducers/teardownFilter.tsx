@@ -2,7 +2,7 @@ import { teardownFilters } from '../actions/teardownActions';
 
 export interface TeardownAction {
   type: string;
-  reps?: string;
+  resp?: string;
 }
 
 const IState = {
@@ -10,12 +10,13 @@ const IState = {
 };
 
 export default function teardown(state = IState, action: TeardownAction) {
-  console.log('teardown reducer state change called', action);
+  console.log('teardown reducer action: ', action);
+  console.log('teardown reducer state: ', state);
   switch (action.type) {
     case teardownFilters.GET_VERSION:
       return {
         ...state,
-        appVersion: action.reps,
+        appVersion: action.resp,
       };
     default:
       return state;
