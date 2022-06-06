@@ -4,6 +4,7 @@ declare global {
       ipcRenderer: {
         myPing(): void;
         getVersion(): void;
+        requestIIRData(formData: {}): void;
         on(
           channel: string,
           func: (...args: unknown[]) => void

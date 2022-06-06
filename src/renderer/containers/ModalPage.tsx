@@ -5,22 +5,17 @@ import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 import { toggleModalState } from '../actions/modalActions';
 // import { modalStateType } from '../../reducers/types';
-// import ErrorModal from './ErrorModal';
-// import SuccessModal from './SuccessModal';
+// import ErrorModal from '../components/modals/ErrorModal';
+// import SuccessModal from '../components/modals/SuccessModal';
 import WarningModal from '../components/modals/WarningModal';
 import ModalBtn from '../components/generalButton/ButtonClickHandler';
+import { ModalStateProps } from '../reducers/modalFilter';
 import '../components/modals/Modal.css';
 
 interface Props {
   toggleModalState: () => Record<string, unknown>;
   modals: {
-    modalFilter: {
-      modalState: boolean;
-      errorModalState: boolean;
-      successModalState: boolean;
-      warningModalState: boolean;
-      modalMessage: any;
-    };
+    modalFilter: ModalStateProps;
   };
 }
 
@@ -44,34 +39,39 @@ function AlarmModal(props: Props) {
   // eslint-disable-next-line no-shadow
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const { toggleModalState } = props;
+  const {
+    modals: {
+      modalFilter: {
+        modalState,
+        // errorModalState,
+        // successModalState,
+        warningModalState,
+        modalMessage,
+      },
+    },
+  } = props;
 
   // TODO: Fix the way string props is passed or how to fix typescript rules.
   return (
     <div>
-      {props.modals.modalFilter.modalState && (
+      {modalState && (
         <ReactModal
-          isOpen={props.modals.modalFilter.modalState}
+          isOpen={modalState}
           onRequestClose={toggleModalState}
           contentLabel="MODAL"
           ariaHideApp={false}
           className="modal-container"
         >
-          {/* {props.modals.errorModalState && (
-            <ErrorModal props={props.modals.modalFilter.modalMessage} />
-          )}
-          {props.modals.successModalState && (
-            <SuccessModal props={props.modals.modalFilter.modalMessage} />
-          )} */}
-          {props.modals.modalFilter.warningModalState && (
-            <WarningModal props={props.modals.modalFilter.modalMessage} />
-          )}
+          {/* {errorModalState && <ErrorModal props={modalMessage} />}
+          {successModalState && <SuccessModal props={modalMessage} />} */}
+          {warningModalState && <WarningModal props={modalMessage} />}
 
-          {!props.modals.modalFilter.warningModalState && (
+          {!warningModalState && (
             <div>
               <ModalBtn buttonName="CLOSE" ClickHandler={toggleModalState} />
             </div>
           )}
-          {props.modals.modalFilter.warningModalState && (
+          {warningModalState && (
             <div>
               <ModalBtn buttonName="CANCEL" ClickHandler={toggleModalState} />
             </div>

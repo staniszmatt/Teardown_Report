@@ -5,11 +5,12 @@ import { setGetVersion } from '../actions/teardownActions';
 import Footer from '../components/Footer';
 import AddTodo from './AddTodo';
 import VisibleTodoList from './VisibleToDoList';
+import { ModalAction } from '../actions/modalActions';
 
 // Example setup for props when ready
 // interface Props {
 //   toggleModalState: () => Record<string, unknown>;
-//   modals: {
+//   teardown: {
 //     modalFilter: {
 //       modalState: boolean;
 //       errorModalState: boolean;
@@ -17,6 +18,10 @@ import VisibleTodoList from './VisibleToDoList';
 //       warningModalState: boolean;
 //       modalMessage: any;
 //     };
+//     teardownFilter: {
+//       appVersion: string;
+
+//     }
 //   };
 // }
 

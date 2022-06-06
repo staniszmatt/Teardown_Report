@@ -11,10 +11,9 @@ interface WarnModalProps {
 }
 
 export default function WarningModal(warnModalProps: WarnModalProps) {
-  const { props } = warnModalProps;
-  const { warningMsg, btnLbl, actionFunction, closeModal } = props;
-
-  console.log('Checking modal warning, props: ', warnModalProps);
+  const {
+    props: { warningMsg, btnLbl, actionFunction, closeModal },
+  } = warnModalProps;
 
   const handleBtn = () => {
     actionFunction();

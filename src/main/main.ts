@@ -16,6 +16,7 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import pjson from '../../package.json';
+import getWorkOrderData from '../../release/app/api/getWorkOrderData';
 
 // const store = new Store();
 
@@ -42,6 +43,19 @@ ipcMain.on('app_version', async (event, arg) => {
   const appVersion = (version: string) => version;
   console.log('app version called: ', pversion, arg);
   event.reply('app_version', appVersion(pversion));
+});
+
+// GET IIR Data from both JobCost and AeroParts Servers
+ipcMain.on('get_iir_data', async (event, arg) => {
+  console.log('get_iir_data called, arg: ', arg);
+  console.log('get_iir_data called, event: ', event);
+  try {
+    const returnData = await getWorkOrderData(arg);
+    event.reply('get_iir_data', returnData);
+    console.log('returned data for get_iir_data: ', returnData);
+  } catch (error) {
+    console.log('Error on get_iir_data: error: ', error);
+  }
 });
 
 if (process.env.NODE_ENV === 'production') {

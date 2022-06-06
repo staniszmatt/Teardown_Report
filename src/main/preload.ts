@@ -1,20 +1,12 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
 contextBridge.exposeInMainWorld('electron', {
-  // store: {
-  //   get(val: any) {
-  //     return ipcRenderer.sendSync('electron-store-get', val);
-  //   },
-  //   set(property: string, val: any) {
-  //     ipcRenderer.send('electron-store-set', property, val);
-  //   },
-  // },
   ipcRenderer: {
     myPing() {
       ipcRenderer.send('ipc-example', 'ping');
     },
     on(channel: string, func: (...args: unknown[]) => void) {
-      const validChannels = ['ipc-example', 'app_version'];
+      const validChannels = ['ipc-example', 'app_version', 'get_iir_data'];
       console.log('ipc render channel: ', channel);
 
       if (validChannels.includes(channel)) {
@@ -29,7 +21,7 @@ contextBridge.exposeInMainWorld('electron', {
       return undefined;
     },
     once(channel: string, func: (...args: unknown[]) => void) {
-      const validChannels = ['ipc-example', 'app_version'];
+      const validChannels = ['ipc-example', 'app_version', 'get_iir_data'];
       console.log('once channel string: ', channel);
       if (validChannels.includes(channel)) {
         // Deliberately strip event as it includes `sender`
@@ -38,6 +30,9 @@ contextBridge.exposeInMainWorld('electron', {
     },
     getVersion() {
       ipcRenderer.send('app_version');
+    },
+    requestIIRData(formData: {}) {
+      ipcRenderer.send('get_iir_data', formData);
     },
   },
 });

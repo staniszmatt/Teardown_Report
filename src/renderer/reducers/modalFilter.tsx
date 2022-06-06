@@ -1,9 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { modalFilters } from '../actions/modalActions';
+import { modalFilters, ModalAction } from '../actions/modalActions';
 
-export interface ModalAction {
-  type: string;
-  resp?: any;
+export interface ModalStateProps {
+  modalState: boolean;
+  errorModalState: boolean;
+  successModalState: boolean;
+  warningModalState: boolean;
+  // modalMessage: any;
+  modalMessage: {
+    warningMsg: string;
+    btnLbl: string;
+    actionFunction: () => Record<string, unknown>;
+    closeModal: () => Record<string, unknown>;
+  };
 }
 
 const IState = {
@@ -11,11 +20,10 @@ const IState = {
   errorModalState: false,
   successModalState: false,
   warningModalState: false,
-  modalMessage: 'Initial',
+  modalMessage: {},
 };
 
 export default function modals(state = IState, action: ModalAction) {
-  console.log('modalFilter reducer action: ', action);
   switch (action.type) {
     case modalFilters.TOGGLE_MODAL_STATE:
       return {

@@ -1,22 +1,27 @@
-import { teardownFilters } from '../actions/teardownActions';
-
-export interface TeardownAction {
-  type: string;
-  resp?: string;
-}
+import {
+  teardownFilters,
+  TeardownActionProps,
+} from '../actions/teardownActions';
 
 const IState = {
   appVersion: '',
+  workOrderInfo: {},
 };
 
-export default function teardown(state = IState, action: TeardownAction) {
-  console.log('teardown reducer action: ', action);
-  console.log('teardown reducer state: ', state);
+export default function teardown(state = IState, action: TeardownActionProps) {
+  console.log('teardownFilter reducers called: action: ', action);
+  console.log('teardownFilter reducers called: state: ', state);
+
   switch (action.type) {
     case teardownFilters.GET_VERSION:
       return {
         ...state,
         appVersion: action.resp,
+      };
+    case teardownFilters.GET_IIR_WORK_ORDER_DATA:
+      return {
+        ...state,
+        workOrderInfo: action.resp,
       };
     default:
       return state;

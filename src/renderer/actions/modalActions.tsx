@@ -1,3 +1,8 @@
+export interface ModalAction {
+  type: string;
+  resp?: any;
+}
+
 export const toggleModalState = () => ({
   type: 'TOGGLE_MODAL_STATE',
 });

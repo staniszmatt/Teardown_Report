@@ -13,6 +13,10 @@
     "link-modules": "node -r ts-node/register ../../.erb/scripts/link-modules.ts",
     "postinstall": "npm run electron-rebuild && npm run link-modules"
   },
-  "dependencies": {},
+  "dependencies": {
+    "msnodesqlv8": "^2.4.8",
+    "mssql": "^8.1.2",
+    "odbc": "^2.4.4"
+  },
   "license": "MIT"
 }
